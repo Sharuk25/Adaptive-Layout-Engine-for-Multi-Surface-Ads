@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLAM Adaptive Studio</title>
+    <meta name="description" content="Adaptive Layout Engine for Multi-Surface Ads" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>FLAM Adaptive Studio</h1>
+      <div class="engine-status">Engine: ONLINE</div>
+    </header>
+
+    <main>
+      <div class="panel panel-left">
+        <h2>Ad Spec (Input)</h2>
+        <div class="element-list">
+          <div class="element-item"><span>Headline</span> <span class="text-muted">P1</span></div>
+          <div class="element-item"><span>Product Image</span> <span class="text-muted">P1</span></div>
+          <div class="element-item"><span>Price</span> <span class="text-muted">P2</span></div>
+          <div class="element-item"><span>CTA</span> <span class="text-muted">P2</span></div>
+          <div class="element-item"><span>Logo</span> <span class="text-muted">P3</span></div>
+        </div>
+
+        <h2>Surface Profiles</h2>
+        <div class="surface-list">
+          <button class="surface-btn active" data-surface="mobilePortrait">Mobile Portrait</button>
+          <button class="surface-btn" data-surface="mobileLandscape">Mobile Landscape</button>
+          <button class="surface-btn" data-surface="kiosk">Square Kiosk</button>
+          <button class="surface-btn" data-surface="broadcast">Broadcast Lower Third</button>
+          <button class="surface-btn" data-surface="stress">Extreme Stress (320x220)</button>
+          <button class="surface-btn" data-surface="custom">Custom Surface...</button>
+        </div>
+
+        <div id="custom-form" class="custom-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div class="input-group">
+              <label>Width</label>
+              <input type="number" id="custom-w" value="500">
+            </div>
+            <div class="input-group">
+              <label>Height</label>
+              <input type="number" id="custom-h" value="300">
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Safe Area (top,right,bottom,left)</label>
+            <input type="text" id="custom-sa" value="20,20,20,20">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div class="input-group">
+              <label>Min Text Size</label>
+              <input type="number" id="custom-min-text" value="12">
+            </div>
+            <div class="input-group">
+              <label>Min Tap Target</label>
+              <input type="number" id="custom-min-tap" value="44">
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Viewing Distance</label>
+            <select id="custom-dist" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.4rem; border-radius: 0.25rem;">
+              <option value="near">Near</option>
+              <option value="far">Far</option>
+            </select>
+          </div>
+          <label class="checkbox-label" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">
+            <input type="checkbox" id="custom-touch" checked> Touch Only
+          </label>
+          <button id="apply-custom" style="margin-top: 0.5rem; background: var(--accent); color: white; border: none; text-align: center;">Resolve Layout</button>
+        </div>
+
+        <label class="checkbox-label" style="margin-top: auto;">
+          <input type="checkbox" id="debug-toggle"> Show Constraints / Debug Mode
+        </label>
+      </div>
+
+      <div class="panel-center">
+        <div class="preview-container-wrapper">
+          <div id="preview-scale-wrapper" style="position: relative;">
+            <div id="preview-canvas" class="preview-container"></div>
+          </div>
+        </div>
+        <div id="log-panel" class="log-panel"></div>
+      </div>
+
+      <div class="panel panel-right">
+        <h2>Resolution Inspector</h2>
+        <div id="inspector-panel"></div>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
